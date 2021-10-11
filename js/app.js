@@ -17,11 +17,28 @@ const prevGuessMsg = document.querySelector("#prev-guesses-msg")
 
 /*----------------------------- Event Listeners -----------------------------*/
 form.addEventListener('reset', init)
-
+form.addEventListener('submit', function(evt) {
+  evt.preventDefault()
+  if (isWinner === false) {
+    checkGuess(parseInt(guessInput.value))
+  }
+})
 
 /*-------------------------------- Functions --------------------------------*/
 
 init()
+
+function checkGuess(guess) {
+  if (isNaN(guess) || guess < 1 || guess > 100) {
+    // ERROR
+  } else if (guess === secretNum) {
+    // WINNAH WINNAH CHICKEN DINNAH!
+  } else {
+    guessList.push(guess)
+  }
+}
+
+
 
 function init(){
   // Remove all guesses from the guess list
