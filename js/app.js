@@ -42,11 +42,25 @@ function checkGuess(guess) {
 }
 
 function renderError(error) {
-
+  messageEl.innerText = error
+  messageEl.className = 'error'
 }
 
 function renderGuess(div, lastGuess) {
-  
+
+}
+
+function renderWin(div) {
+  // Turns the message element green
+  messageEl.className = 'winner'
+  // Turn the number green!
+  div.className = 'winner'
+  guessesEl.appendChild(div)
+  if (guessList.length === 1) {
+    messageEl.innerText = `You found the number in one guess!`
+  } else {
+    messageEl.innerText = `Congratulations! You found the number ${secretNum} in ${guessList.length} guesses!`
+  }
 }
 
 function render() {
