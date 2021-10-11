@@ -3,7 +3,7 @@
 
 
 /*-------------------------------- Variables --------------------------------*/
-
+let secretNum, guessList, isWinner
 
 
 /*------------------------ Cached Element References ------------------------*/
