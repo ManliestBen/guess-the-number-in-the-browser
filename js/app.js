@@ -16,7 +16,7 @@ const prevGuessMsg = document.querySelector("#prev-guesses-msg")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+form.addEventListener('reset', init)
 
 
 /*-------------------------------- Functions --------------------------------*/
