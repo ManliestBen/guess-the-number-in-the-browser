@@ -47,7 +47,20 @@ function renderError(error) {
 }
 
 function renderGuess(div, lastGuess) {
+  if (lastGuess < secretNum) {
+    // Handle a guess that is too low
+    messageEl.className = 'low'
+    div.className = 'low'
+    messageEl.innerText = `${lastGuess} is too low, please try again!`
+  } else {
+    // Handle a guess that is too high
+    messageEl.className = 'high'
+    div.className = 'high'
+    messageEl.innerText = `${lastGuess} is too high, please try again!`
+  }
 
+  // Append the <div> to the guessesEl
+  guessesEl.appendChild(div)
 }
 
 function renderWin(div) {
