@@ -31,16 +31,44 @@ init()
 function checkGuess(guess) {
   if (isNaN(guess) || guess < 1 || guess > 100) {
     // ERROR
+    renderError('Whoops!  Please enter a number from 1 to 100.')
+    return
   } else if (guess === secretNum) {
     // WINNAH WINNAH CHICKEN DINNAH!
-  } else {
-    guessList.push(guess)
+    isWinner = true
+  }
+  guessList.push(guess)
+  render()
+}
+
+function renderError(error) {
+
+}
+
+function renderGuess(div, lastGuess) {
+  
+}
+
+function render() {
+  const lastGuess = guessList[guessList.length -1]
+  const div = document.createElement('div')
+  div.innerText = lastGuess
+
+  if (guessList.length === 1) {
+    prevGuessMsg.innerText = 'Previous Guesses:'
+    resetBtn.removeAttribute('hidden')
+  }
+
+  if (isWinner) {
+    renderWin(div)
+  } else if (lastGuess > secretNum || lastGuess < secretNum) {
+    renderGuess(div, lastGuess)
   }
 }
 
-
-
 function init(){
+  // Remove className from message div (turns it back to black)
+  messageEl.className = ''
   // Remove all guesses from the guess list
   guessesEl.innerText = ''
   // Reset the starting message
@@ -56,6 +84,7 @@ function init(){
   // Generate new secretNum
   secretNum = Math.floor(Math.random() * 100 + 1)
   console.log(secretNum)
+  render()
 }
 
 
